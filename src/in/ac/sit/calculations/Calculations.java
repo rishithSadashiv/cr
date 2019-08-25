@@ -1,5 +1,7 @@
 package in.ac.sit.calculations;
 
+import in.ac.sit.entity.Equation;
+
 public class Calculations {
 	
 	public int[][] getAddnTable(int n)
@@ -75,6 +77,43 @@ public class Calculations {
 			}
 		}
 		return 0;
+	}
+	
+	void findSolution(Equation e1,Equation e2, Equation e3, int m) 
+	{ 
+	    // Matrix d using coeff as given in cramer's rule 
+	    // Calculating Determinant of Matrices d, d1, d2, d3 
+	    	    
+	    int D = computeDeterminantValue(e1.getA(), e2.getA(), e3.getA(), e1.getB(), e2.getB(), e3.getB(), e1.getC(), e2.getC(), e3.getC(), m); 
+	    int D1 = computeDeterminantValue(e1.getS(), e2.getS(), e3.getS(), e1.getB(), e2.getB(), e3.getB(), e1.getC(), e2.getC(), e3.getC(), m); 
+	    int D2 = computeDeterminantValue(e1.getA(), e2.getA(), e3.getA(), e1.getS(), e2.getS(), e3.getS(), e1.getC(), e2.getC(), e3.getC(), m); 
+	    int D3 = computeDeterminantValue(e1.getA(), e2.getA(), e3.getA(), e1.getB(), e2.getB(), e3.getB(), e1.getS(), e2.getS(), e3.getS(), m); 
+
+	    System.out.printf("D is : %d \n", D); 
+	    System.out.printf("D1 is : %d \n", D1); 
+	    System.out.printf("D2 is : %d \n", D2); 
+	    System.out.printf("D3 is : %d \n", D3); 
+	  
+	    // Case 1 
+	    if (D != 0)  
+	    { 
+	        //Apply Cramer's Rule 
+	        int x = mult(D1 , multiplicativeInverse(D, m),m); 
+	        int y = mult(D2 , multiplicativeInverse(D, m),m);
+	        int z = mult(D3 , multiplicativeInverse(D, m),m);// calculating z using cramer's rule 
+	        System.out.printf("Value of x is : %d\n", x); 
+	        System.out.printf("Value of y is : %d\n", y); 
+	        System.out.printf("Value of z is : %d\n", z); 
+	    } 
+	      
+	    // Case 2 
+	    else 
+	    { 
+	        if (D1 == 0 && D2 == 0 && D3 == 0) 
+	            System.out.printf("Infinite solutions\n"); 
+	        else if (D1 != 0 || D2 != 0 || D3 != 0) 
+	            System.out.printf("No solutions\n"); 
+	    } 
 	}
 
 }
