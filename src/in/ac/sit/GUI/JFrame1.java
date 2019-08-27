@@ -6,7 +6,10 @@
 package in.ac.sit.GUI;
 
 import in.ac.sit.calculations.Calculations;
+import in.ac.sit.exception.CrException;
 import java.awt.CardLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -91,14 +94,23 @@ public class JFrame1 extends javax.swing.JFrame {
         mainPanel.setPreferredSize(new java.awt.Dimension(600, 600));
         mainPanel.setLayout(new java.awt.CardLayout());
 
+        inputPanel.setBackground(new java.awt.Color(5, 58, 107));
+        inputPanel.setForeground(new java.awt.Color(92, 212, 149));
+
+        jLabel1.setForeground(new java.awt.Color(92, 219, 149));
         jLabel1.setText("System of Equations with 3 variables");
 
+        jLabel2.setForeground(new java.awt.Color(92, 219, 149));
         jLabel2.setText("Equation 1:");
 
+        jLabel3.setForeground(new java.awt.Color(92, 219, 149));
         jLabel3.setText("Equation 2:");
 
+        jLabel4.setForeground(new java.awt.Color(92, 219, 149));
         jLabel4.setText("Equation 3:");
 
+        enterButton.setBackground(new java.awt.Color(92, 219, 149));
+        enterButton.setForeground(new java.awt.Color(5, 58, 107));
         enterButton.setText("ENTER");
         enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +118,8 @@ public class JFrame1 extends javax.swing.JFrame {
             }
         });
 
+        exitButton.setBackground(new java.awt.Color(92, 219, 149));
+        exitButton.setForeground(new java.awt.Color(5, 58, 107));
         exitButton.setText("CLOSE");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,24 +127,34 @@ public class JFrame1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setForeground(new java.awt.Color(92, 219, 149));
         jLabel5.setText("X  +");
 
+        jLabel6.setForeground(new java.awt.Color(92, 219, 149));
         jLabel6.setText("Y  +");
 
+        jLabel7.setForeground(new java.awt.Color(92, 219, 149));
         jLabel7.setText("Z  =");
 
+        jLabel8.setForeground(new java.awt.Color(92, 219, 149));
         jLabel8.setText("Z  =");
 
+        jLabel9.setForeground(new java.awt.Color(92, 219, 149));
         jLabel9.setText("Y  +");
 
+        jLabel10.setForeground(new java.awt.Color(92, 219, 149));
         jLabel10.setText("X  +");
 
+        jLabel11.setForeground(new java.awt.Color(92, 219, 149));
         jLabel11.setText("X  +");
 
+        jLabel12.setForeground(new java.awt.Color(92, 219, 149));
         jLabel12.setText("Y  +");
 
+        jLabel13.setForeground(new java.awt.Color(92, 219, 149));
         jLabel13.setText("Z  =");
 
+        jLabel14.setForeground(new java.awt.Color(92, 219, 149));
         jLabel14.setText("Modulo:");
 
         modulo.addActionListener(new java.awt.event.ActionListener() {
@@ -257,22 +281,48 @@ public class JFrame1 extends javax.swing.JFrame {
 
         mainPanel.add(inputPanel, "inputPanel");
 
+        outputPanel.setBackground(new java.awt.Color(5, 58, 107));
+
+        jLabel15.setForeground(new java.awt.Color(92, 219, 149));
         jLabel15.setText("Output Panel");
 
+        jLabel16.setForeground(new java.awt.Color(92, 219, 149));
         jLabel16.setText("D:");
 
+        jLabel17.setForeground(new java.awt.Color(92, 219, 149));
         jLabel17.setText("D1:");
 
+        jLabel18.setForeground(new java.awt.Color(92, 219, 149));
         jLabel18.setText("D2:");
 
+        jLabel19.setForeground(new java.awt.Color(92, 219, 149));
         jLabel19.setText("D3:");
 
+        jLabel20.setForeground(new java.awt.Color(92, 219, 149));
         jLabel20.setText("X:");
 
+        jLabel21.setForeground(new java.awt.Color(92, 219, 149));
         jLabel21.setText("Y:");
 
+        jLabel22.setForeground(new java.awt.Color(92, 219, 149));
         jLabel22.setText("Z:");
 
+        outD.setForeground(new java.awt.Color(92, 219, 149));
+
+        outY.setForeground(new java.awt.Color(92, 219, 149));
+
+        outZ.setForeground(new java.awt.Color(92, 219, 149));
+
+        outD1.setForeground(new java.awt.Color(92, 219, 149));
+
+        outD3.setForeground(new java.awt.Color(92, 219, 149));
+
+        outX.setForeground(new java.awt.Color(92, 219, 149));
+
+        outD2.setForeground(new java.awt.Color(92, 219, 149));
+
+        backButton.setBackground(new java.awt.Color(92, 219, 149));
+        backButton.setForeground(new java.awt.Color(5, 58, 107));
         backButton.setText("BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,6 +435,10 @@ public class JFrame1 extends javax.swing.JFrame {
         int m,a1,a2,a3,b1,b2,b3,c1,c2,c3,s1,s2,s3;
         int x = 0, y = 0, z = 0;
         try{
+            if(modulo.getText().equals("") || a1a.getText().equals("") || a2a.getText().equals("") || a3a.getText().equals("") || b1b.getText().equals("") || b2b.getText().equals("") || b3b.getText().equals("") || c1c.getText().equals("") || c2c.getText().equals("") || c3c.getText().equals("") || s1s.getText().equals("") || s2s.getText().equals("") || s3s.getText().equals(""))
+            {
+                throw new CrException("Enter a value, Input field is empty.");
+            }
             m = Integer.parseInt(modulo.getText().trim());
             a1 = Integer.parseInt(a1a.getText().trim());
             a2 = Integer.parseInt(a2a.getText().trim());
@@ -437,6 +491,9 @@ public class JFrame1 extends javax.swing.JFrame {
         }catch(NumberFormatException e)
         {
             JOptionPane.showMessageDialog(outputPanel, "Invalid input, Input should be a number", "Invalid", JOptionPane.ERROR_MESSAGE);
+        } catch (CrException ex) {
+            Logger.getLogger(JFrame1.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(inputPanel, ex.getDetails(), "Invalid input", JOptionPane.INFORMATION_MESSAGE);
         }  
     }//GEN-LAST:event_enterButtonActionPerformed
 

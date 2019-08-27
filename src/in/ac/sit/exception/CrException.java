@@ -1,6 +1,6 @@
 package in.ac.sit.exception;
 
-public class CrException {
+public class CrException extends Exception{
 	
 	String details;
 
