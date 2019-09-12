@@ -44,6 +44,9 @@ public class Test {
 	        else if (D1 != 0 || D2 != 0 || D3 != 0) 
 	            System.out.printf("No solutions\n"); 
 	    } 
+	    System.out.println("Addn Table");
+	    
+	    //System.out.println(cal.getAddnTable(m));
 	}
 
 	public static void main(String[] args) {
